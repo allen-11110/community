@@ -1,8 +1,6 @@
 package com.newcode.community.controller;
 
 
-import com.newcode.community.dao.DiscussPostMapper;
-import com.newcode.community.dao.UserMapper;
 import com.newcode.community.entity.DiscussPost;
 import com.newcode.community.entity.Page;
 import com.newcode.community.entity.User;
