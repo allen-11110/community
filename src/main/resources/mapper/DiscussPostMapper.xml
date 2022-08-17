@@ -7,6 +7,9 @@
     <sql id="selectDiscussPostsFields">
         id, user_id, title, content, type, status, create_time, comment_count, score
     </sql>
+    <sql id="insertDiscussPostsFields">
+         user_id, title, content, type, status, create_time, comment_count, score
+    </sql>
    <select id="selectDiscussPosts" resultType="DiscussPost">
        select <include refid="selectDiscussPostsFields"></include>
        from discuss_post
@@ -28,4 +31,18 @@
         </if>
     </select>
 
+    <insert id="insertDisscussPost" parameterType="DiscussPost" keyProperty="id">
+       insert into discuss_post (<include refid="insertDiscussPostsFields"></include>)
+       values (#{userId},#{title},#{content},#{type},#{status},#{createTime},#{commentCount},#{score})
+    </insert>
+
+    <select id="selectDiscussionPostById" resultType="DiscussPost">
+        select <include refid="selectDiscussPostsFields"></include>
+        from discuss_post
+        where id = #{id}
+    </select>
+
+    <update id="updateCommentCountById">
+        update discuss_post set comment_count =#{count} where id =#{id}
+    </update>
 </mapper>
